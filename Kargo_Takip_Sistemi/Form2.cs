@@ -24,7 +24,7 @@ namespace Kargo_Takip_Sistemi
             cmbNereye.Items.AddRange(new string[] { "İstanbul", "Ankara", "İzmir", "Bursa", "Mersin", "Malatya", "Elazığ", "Kahramanmaraş" });
             cmbKirilacak.Items.AddRange(new string[] { "Evet", "Hayır" });
 
-            // İsteğe bağlı olarak varsayılan değer seçebilirsin
+            
             cmbNereden.SelectedIndex = 0;
             cmbNereye.SelectedIndex = 0;
             cmbKirilacak.SelectedIndex = 1;
