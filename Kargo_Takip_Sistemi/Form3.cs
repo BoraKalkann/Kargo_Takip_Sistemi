@@ -22,7 +22,7 @@ namespace Kargo_Takip_Sistemi
             cmbNereye.Items.AddRange(new string[] { "Amerika", "Meksika", "Fransa", "Azerbeyjan", "Almanya", "Türkmenistan", "Suriye", "Ermenistan" });
             cmbKirilacak.Items.AddRange(new string[] { "Evet", "Hayır" });
 
-            // İsteğe bağlı olarak varsayılan değer seçebilirsin
+            
             cmbNereden.SelectedIndex = 0;
             cmbNereye.SelectedIndex = 0;
             cmbKirilacak.SelectedIndex = 1;
