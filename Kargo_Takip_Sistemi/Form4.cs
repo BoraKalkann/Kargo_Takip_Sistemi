@@ -243,51 +243,6 @@ namespace Kargo_Takip_Sistemi
             }
         }
     }
-
-    // Ortak kullanılan enum ve arabirimler burada kalabilir (isteğe bağlı).
-    public enum Durum
-    {
-        Bekliyor,
-        Yolda,
-        TeslimEdildi
-    }
-
-    public interface ITakipEdilebilir
-    {
-        string TakipNo { get; }
-        Durum GonderiDurumu { get; }
-        void DurumGuncelle(Durum yeniDurum);
-    }
-
-    public abstract class Gonderi : ITakipEdilebilir
-    {
-        public string TakipNo { get; private set; }
-        public Durum GonderiDurumu { get; private set; }
-
-        public Gonderi(string takipNo)
-        {
-            TakipNo = takipNo;
-            GonderiDurumu = Durum.Bekliyor;
-        }
-
-        public void DurumGuncelle(Durum yeniDurum)
-        {
-            GonderiDurumu = yeniDurum;
-        }
-
-        public override string ToString()
-        {
-            return $"{TakipNo} - {GonderiDurumu}";
-        }
-    }
-
-    public class YurticiGonderi : Gonderi
-    {
-        public YurticiGonderi(string takipNo) : base(takipNo) { }
-    }
-
-    public class YurtdisiGonderi : Gonderi
-    {
-        public YurtdisiGonderi(string takipNo) : base(takipNo) { }
-    }
 }
+    // Ortak kullanılan enum ve arabirimler burada kalabilir (isteğe bağlı).
+    
