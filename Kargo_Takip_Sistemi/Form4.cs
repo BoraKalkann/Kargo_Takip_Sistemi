@@ -39,8 +39,7 @@ namespace Kargo_Takip_Sistemi
                 secilenBilgi = listBox1.SelectedItem.ToString();
                 secilenIndex = listBox1.SelectedIndex;
                 aktifListBox = listBox1;
-                listBox2.ClearSelected(); // Diğer listbox'taki seçimi temizle
-            }
+                listBox2.ClearSelected(); 
         }
 
         private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
@@ -50,7 +49,7 @@ namespace Kargo_Takip_Sistemi
                 secilenBilgi = listBox2.SelectedItem.ToString();
                 secilenIndex = listBox2.SelectedIndex;
                 aktifListBox = listBox2;
-                listBox1.ClearSelected(); // Diğer listbox'taki seçimi temizle
+                listBox1.ClearSelected(); 
             }
         }
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -60,10 +59,10 @@ namespace Kargo_Takip_Sistemi
             {
                 string yeniDurum = comboBox1.SelectedItem.ToString();
 
-                // Hangi listbox'tan seçildiğine göre prefix belirle
+                
                 string prefix = aktifListBox == listBox2 ? "F2:" : "F3:";
 
-                // GlobalData.Bilgiler'de tam kaydı bul
+                
                 int index = GlobalData.Bilgiler.FindIndex(x => x.StartsWith(prefix) && x.Substring(3) == secilenBilgi);
 
                 if (index >= 0)
@@ -95,7 +94,6 @@ namespace Kargo_Takip_Sistemi
             {
                 string gosterilen = listBox1.Items[index].ToString();
 
-                // GlobalData içindeki "F3:" ile başlayan ve bu metni içeren öğeyi bul
                 string tamBilgi = GlobalData.Bilgiler
                     .FirstOrDefault(b => b.StartsWith("F3:") && b.Contains(gosterilen));
 
@@ -142,11 +140,11 @@ namespace Kargo_Takip_Sistemi
 
                 if (item.StartsWith("F2:"))
                 {
-                    listBox2.Items.Add(item.Substring(3)); // "F2:" kısmını kaldır
+                    listBox2.Items.Add(item.Substring(3)); 
                 }
                 else if (item.StartsWith("F3:"))
                 {
-                    listBox1.Items.Add(item.Substring(3)); // "F3:" kısmını kaldır
+                    listBox1.Items.Add(item.Substring(3)); 
                 }
                 else
                 {
@@ -178,17 +176,16 @@ namespace Kargo_Takip_Sistemi
         {
             string sorguNumarası = textBox1.Text.Trim();
 
-            // GlobalData.Bilgiler içinde arama yap
+         
             var bulunanGonderi = GlobalData.Bilgiler.FirstOrDefault(bilgi => bilgi.Contains(sorguNumarası));
 
             if (bulunanGonderi != null)
             {
-                // Gönderi bulundu, durumunu göster
+                
                 MessageBox.Show(bulunanGonderi, "Kargo Durumu", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                // Gönderi bulunamadı
                 MessageBox.Show("Bu takip numarasına ait kargo bulunamadı.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
@@ -204,7 +201,7 @@ namespace Kargo_Takip_Sistemi
                 return;
             }
 
-            // GlobalData.Bilgiler içinde takip numarasını ara  
+           
             var gonderi = GlobalData.Bilgiler.FirstOrDefault(bilgi => bilgi.Contains($"Kargo takip numarası: {takipNo}"));
 
             if (gonderi != null)
@@ -219,18 +216,18 @@ namespace Kargo_Takip_Sistemi
                         ? gonderi.Substring(durumIndex, virgulIndex - durumIndex)
                         : gonderi.Substring(durumIndex);
 
-                    // Yeni durumu güncelle  
+                 
                     string yeniBilgi = gonderi.Replace(eskiDurum, $"Durumu: {yeniDurum}");
 
-                    // GlobalData'yı güncelle  
+                   
                     int index = GlobalData.Bilgiler.IndexOf(gonderi);
                     GlobalData.Bilgiler[index] = yeniBilgi;
 
-                    // ListBox'ları güncelle  
+                    
                     ListeyiGuncelle();
 
                     MessageBox.Show($"Kargo durumu başarıyla '{yeniDurum}' olarak güncellendi!", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    textBox2.Clear(); // Textbox'ı temizle  
+                    textBox2.Clear(); 
                 }
                 else
                 {
@@ -244,5 +241,4 @@ namespace Kargo_Takip_Sistemi
         }
     }
 }
-    // Ortak kullanılan enum ve arabirimler burada kalabilir (isteğe bağlı).
     
