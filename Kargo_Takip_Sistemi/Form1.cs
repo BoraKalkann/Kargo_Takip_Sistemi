@@ -22,7 +22,7 @@ namespace Kargo_Takip_Sistemi
         {
             comboBox1.Items.Add("Yurtiçi");
             comboBox1.Items.Add("Yurtdışı");
-            comboBox1.SelectedIndex = 0; // Varsayılan olarak ilkini seç
+            comboBox1.SelectedIndex = 0; 
         }
 
         private void button1_Click(object sender, EventArgs e)
